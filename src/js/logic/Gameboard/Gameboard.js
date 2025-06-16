@@ -1,4 +1,4 @@
-import Ship from '../Ship/ship.js';
+import Ship from '../Ship/Ship.js';
 
 function Gameboard() {
 
