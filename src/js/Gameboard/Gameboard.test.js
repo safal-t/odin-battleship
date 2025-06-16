@@ -27,7 +27,7 @@ describe('Gameboard', () => {
     })
 
     it('returns a cell correctly', () => {
-        expect(gameBoard.returnCell({ x: 0, y: 0 })).toEqual({
+        expect(gameBoard.getCell({ x: 0, y: 0 })).toEqual({
             x: 0,
             y: 0,
             ship: null,
@@ -37,14 +37,14 @@ describe('Gameboard', () => {
 
     it('places a ship correctly', () => {
         gameBoard.placeShip(3, { x: 0, y: 0 }, "horizontal")
-        expect(gameBoard.returnCell({ x: 0, y: 0 }).ship).not.toBeNull()
+        expect(gameBoard.getCell({ x: 0, y: 0 }).ship).not.toBeNull()
     })
 
     it('receives an attack', () => {
         gameBoard.placeShip(3, { x: 0, y: 0 }, "horizontal")
         gameBoard.receiveAttack({ x: 0, y: 0 })
-        expect(gameBoard.returnCell({ x: 0, y: 0 }).isHit).toBe(true)
-        expect(gameBoard.returnCell({ x: 9, y: 9 }).isHit).toBe(false)
+        expect(gameBoard.getCell({ x: 0, y: 0 }).isHit).toBe(true)
+        expect(gameBoard.getCell({ x: 9, y: 9 }).isHit).toBe(false)
 
     })
 

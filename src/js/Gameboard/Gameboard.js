@@ -22,7 +22,7 @@ function Gameboard() {
         const neededCoordinates = calculateNeededCoordinates(length, coordinates, direction)
         if (coordinatesAreValid(neededCoordinates)) {
             neededCoordinates.forEach(({ x, y }) => {
-                board[x][y].ship = ship
+                getCell({ x, y }).ship = ship
             })
             return true // ship placed
         }
@@ -49,14 +49,15 @@ function Gameboard() {
         )
     }
 
-    function returnCell({ x, y }) {
-        return board[x][y]
+    function getCell({ x, y }) {
+        return board[y][x]
     }
 
     function receiveAttack({ x, y }) {
-        if (board[x][y].ship !== null) {
-            board[x][y].isHit = true
-            board[x][y].ship.hit()
+        const board = getCell({ x, y })
+        if (board.ship !== null) {
+            board.isHit = true
+            board.ship.hit()
         }
         else missedAttacks.push({ x, y })
     }
@@ -70,7 +71,7 @@ function Gameboard() {
             return board
         },
         placeShip,
-        returnCell,
+        getCell,
         receiveAttack,
         allShipsSunk
     }
