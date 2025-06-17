@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  min-height: 100vh;
+  width: 100%;
+}
+
+body {
+  font-family: sans-serif;
+  text-align: center;
+  padding: 2%;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  gap: 10%;
+  margin-top: 4rem;
+}
+
+.board-container {
+  width: 30%;
+  min-height: 70vh;
+}
+
+.gameboard-container {
+  margin: 10px;
+  aspect-ratio: 1/1;
+  outline: 2px solid black;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cell {
+  outline: 1px solid grey;
+  width: 10%;
+  aspect-ratio: 1/1;
+}
