@@ -24,9 +24,9 @@ function Gameboard() {
             neededCoordinates.forEach(({ x, y }) => {
                 getCell({ x, y }).ship = ship
             })
-            return true // ship placed
+            return ship // ship placed
         }
-        return false // ship not placed
+        return null // ship not placed
     }
 
     function calculateNeededCoordinates(length, { x, y }, direction) {
