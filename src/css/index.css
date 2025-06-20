@@ -15,28 +15,38 @@ body {
   padding: 2%;
 }
 
-section {
+.main {
+  outline: 1px solid red;
+  height: 80vh;
+  margin: 1rem;
+  padding: 5%;
   display: flex;
   justify-content: center;
   gap: 10%;
-  margin-top: 4rem;
 }
 
-.board-container {
-  width: 30%;
-  min-height: 70vh;
-}
-
-.gameboard-container {
-  margin: 10px;
+.player-game-container,
+.computer-game-container {
+  outline: 1px solid blue;
+  height: 100%;
   aspect-ratio: 1/1;
-  outline: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5%;
+}
+
+.player-game-board-container,
+.computer-game-board-container {
+  outline: 1px solid green;
+  height: 80%;
+  aspect-ratio: 1/1;
   display: flex;
   flex-wrap: wrap;
 }
 
 .cell {
-  outline: 1px solid grey;
-  width: 10%;
+  border: 1px solid black;
+  height: 10%;
   aspect-ratio: 1/1;
 }
