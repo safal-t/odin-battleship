@@ -36,9 +36,9 @@ body {
   gap: 5%;
 }
 
-.player-game-board-container,
-.computer-game-board-container {
-  outline: 1px solid green;
+.player-game-board,
+.computer-game-board {
+  border: 2px solid black;
   height: 80%;
   aspect-ratio: 1/1;
   display: flex;
