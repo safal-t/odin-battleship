@@ -20,8 +20,8 @@ function GameController() {
         // do i need?? 
     }
 
-    function manageTurn(currentPlayer) {
-
+    function changeTurn(currentPlayer) {
+        return currentPlayer === humanPlayer ? computerPlayer : humanPlayer
     }
 
     function receiveAttack() {
