@@ -1,5 +1,5 @@
 import Player from './Player/Player.js'
-import { initializeBoard, updateCell } from '../dom/dom.js'
+import domManager from '../dom/dom.js'
 
 function GameController() {
 
@@ -8,8 +8,8 @@ function GameController() {
     const currentPlayer = humanPlayer
 
     function startGame() {
-        initializeBoard(humanPlayer.getGameBoard.getBoard, humanPlayer)
-        initializeBoard(computerPlayer.getGameBoard.getBoard, computerPlayer)
+        domManager.initializeBoard(humanPlayer.getGameBoard.getBoard, humanPlayer)
+        domManager.initializeBoard(computerPlayer.getGameBoard.getBoard, computerPlayer)
     }
 
     function endGame() {
