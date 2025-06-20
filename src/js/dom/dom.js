@@ -1,11 +1,11 @@
 function initializeBoard(board, player) {
-    const playerBoard = document.querySelector(`.${player}-gameboard`)
+    const currentBoard = document.querySelector(`.${player.type}-game-board`)
+    console.log(board)
     board.forEach(row => {
         row.forEach(cell => {
             const square = document.createElement("div")
             square.classList.add('cell')
-            playerBoard.appendChild(square)
-
+            currentBoard.appendChild(square)
         })
     });
 }
