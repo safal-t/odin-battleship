@@ -7,7 +7,8 @@ module.exports = {
     output: {
         filename: 'bundle.js', // Bundled JS filename
         path: path.resolve(__dirname, 'dist'), // Absolute path to dist
-        assetModuleFilename: 'assets/[hash][ext][query]' // for images if needed
+        assetModuleFilename: 'assets/[hash][ext][query]', // for images if needed
+        publicPath: '/repo-name/'
     },
     module: {
         rules: [
