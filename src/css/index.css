@@ -16,7 +16,6 @@ body {
 }
 
 .main {
-  outline: 1px solid red;
   height: 80vh;
   margin: 1rem;
   padding: 5%;
@@ -27,13 +26,12 @@ body {
 
 .player-game-container,
 .computer-game-container {
-  outline: 1px solid blue;
   height: 100%;
   aspect-ratio: 1/1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 5%;
+  gap: 1%;
 }
 
 .player-game-board,
@@ -51,7 +49,7 @@ body {
   aspect-ratio: 1/1;
 }
 
-.ship {
+.player-game-board > .ship {
   background-color: blue;
 }
 
