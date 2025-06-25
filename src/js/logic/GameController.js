@@ -50,8 +50,15 @@ function GameController() {
 
     }
 
+    function handleCellClick(cell) {
+        if (cell.dataset.playerType === "computer" && currentPlayer === humanPlayer) {
+            receiveAttack(cell)
+        }
+    }
+
     return {
-        startGame
+        startGame,
+        handleCellClick
     }
 }
 
