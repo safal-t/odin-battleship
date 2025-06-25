@@ -1,6 +1,7 @@
-function Ship(length) {
+function Ship(length, coordinates) {
     let timesHit = 0;
     let sunk = false;
+
 
     function hit() {
         timesHit++
@@ -15,6 +16,9 @@ function Ship(length) {
         },
         get numberOfHits() {
             return timesHit
+        },
+        get getCoordinates() {
+            return coordinates
         },
         hit,
         isSunk

@@ -1,8 +1,7 @@
 import Gameboard from '../Gameboard/Gameboard.js'
 
 function Player(type) {
-    const gameBoard = Gameboard()
-
+    const gameBoard = Gameboard(type)
     return {
         type,
         get getGameBoard() {

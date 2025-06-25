@@ -50,3 +50,7 @@ body {
   height: 10%;
   aspect-ratio: 1/1;
 }
+
+.ship {
+  background-color: blue;
+}

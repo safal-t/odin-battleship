@@ -1,6 +1,6 @@
 import Ship from '../Ship/Ship.js';
 
-function Gameboard() {
+function Gameboard(playerType) {
 
     const board = Array(10).fill(null).map((_, y) =>
         Array(10).fill(null).map((_, x) => {
@@ -17,7 +17,7 @@ function Gameboard() {
     const allShips = []
 
     function placeShip(length, coordinates, direction) {
-        const ship = Ship(length)
+        const ship = Ship(length, coordinates)
         allShips.push(ship)
         const neededCoordinates = calculateNeededCoordinates(length, coordinates, direction)
         if (coordinatesAreValid(neededCoordinates)) {
@@ -69,6 +69,9 @@ function Gameboard() {
     return {
         get getBoard() {
             return board
+        },
+        get getPlayerType() {
+            return playerType
         },
         placeShip,
         getCell,
