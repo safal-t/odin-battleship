@@ -60,3 +60,7 @@ body {
 .attacked {
   background-color: red;
 }
+
+.player-game-board > .attacked {
+  background-color: red;
+}
