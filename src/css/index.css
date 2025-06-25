@@ -54,3 +54,11 @@ body {
 .ship {
   background-color: blue;
 }
+
+.missed-attack {
+  background-color: grey;
+}
+
+.attacked {
+  background-color: red;
+}

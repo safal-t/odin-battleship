@@ -8,12 +8,12 @@ function GameController() {
     const currentPlayer = humanPlayer
 
     function startGame() {
-        domManager.initializeBoard(humanPlayer.getGameBoard, humanPlayer)
-        domManager.initializeBoard(computerPlayer.getGameBoard, computerPlayer)
-
-        populateBoard(humanPlayer.getGameBoard)
-        populateBoard(computerPlayer.getGameBoard)
+        domManager.initializeBoard(humanPlayer.getGameBoard, humanPlayer, handleCellClick);
+        domManager.initializeBoard(computerPlayer.getGameBoard, computerPlayer, handleCellClick);
+        populateBoard(humanPlayer.getGameBoard);
+        populateBoard(computerPlayer.getGameBoard);
     }
+
 
     function endGame() {
 
@@ -27,8 +27,15 @@ function GameController() {
         return currentPlayer === humanPlayer ? computerPlayer : humanPlayer
     }
 
-    function receiveAttack() {
-
+    function receiveAttack(cellElement) {
+        const [x, y] = cellElement.dataset.coordinates.split(',').map(Number)
+        const cell = computerPlayer.getGameBoard.getCell({ x, y })
+        if (cell.ship === null) {
+            domManager.updateCell(cell, "missed-attack", "computer")
+        } else {
+            domManager.updateCell(cell, "attacked", "computer")
+            cell.isHit = true
+        }
     }
 
     function populateBoard(board) {
