@@ -5,7 +5,7 @@ function GameController() {
 
     const humanPlayer = Player("player")
     const computerPlayer = Player("computer")
-    const currentPlayer = humanPlayer
+    let currentPlayer = humanPlayer
 
     function startGame() {
         domManager.initializeBoard(humanPlayer.getGameBoard, humanPlayer, handleCellClick);
@@ -27,16 +27,23 @@ function GameController() {
         return currentPlayer === humanPlayer ? computerPlayer : humanPlayer
     }
 
-    function receiveAttack(cellElement) {
+    function receiveAttack(cellElement, playerType) {
         const [x, y] = cellElement.dataset.coordinates.split(',').map(Number)
-        const cell = computerPlayer.getGameBoard.getCell({ x, y })
+        const cell = playerType.getGameBoard.getCell({ x, y })
+
+        let playerTypeStr = "player";
+        if (playerType === computerPlayer) {
+            playerTypeStr = "computer"
+        }
+
         if (cell.ship === null) {
-            domManager.updateCell(cell, "missed-attack", "computer")
+            domManager.updateCell(cell, "missed-attack", playerTypeStr)
         } else {
-            domManager.updateCell(cell, "attacked", "computer")
+            domManager.updateCell(cell, "attacked", playerTypeStr)
             cell.isHit = true
         }
     }
+
 
     function populateBoard(board) {
         const ship1 = board.placeShip(5, { x: 0, y: 0 }, "horizontal")
@@ -59,9 +66,29 @@ function GameController() {
 
     function handleCellClick(cell) {
         if (cell.dataset.playerType === "computer" && currentPlayer === humanPlayer) {
-            receiveAttack(cell)
+            receiveAttack(cell, computerPlayer)
+            currentPlayer = changeTurn(currentPlayer)
+            computerAttack()
         }
     }
+
+    function computerAttack() {
+        const coordinates = computerPlayer.makeRandomMove();
+
+        const { x, y } = coordinates;
+
+        const playerBoard = document.querySelector(".player-game-board");
+        const cellElement = playerBoard.querySelector(`[data-coordinates="${x},${y}"]`);
+
+        if (cellElement) {
+            receiveAttack(cellElement, humanPlayer);
+        } else {
+            console.error(`Player cell not found for coordinates: ${x}, ${y}`);
+        }
+        currentPlayer = changeTurn(currentPlayer)
+
+    }
+
 
     return {
         startGame,

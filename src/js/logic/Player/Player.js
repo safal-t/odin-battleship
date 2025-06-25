@@ -20,6 +20,7 @@ function Player(type) {
 
     return {
         type,
+        makeRandomMove,
         get getGameBoard() {
             return gameBoard
         }
